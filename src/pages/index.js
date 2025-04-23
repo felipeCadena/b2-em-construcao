@@ -60,9 +60,28 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="z-50 md:hidden absolute top-4 mx-auto">
+        <div className="w-32 h-10 mx-auto my-2">
+          <Image
+            src="/logo-web.png"
+            alt="Logo"
+            width={96}
+            height={48}
+            className="w-32 h-10 object-contain"
+          />
+        </div>
+        <h1 className="text-5xl md:text-6xl text-center font-bold mb-2">
+          EM BREVE
+        </h1>
+
+        <p className="text-xl text-center mb-4">
+          Data de lançamento: 01 de junho
+        </p>
+      </div>
+
       {/* Conteúdo */}
       <div className="z-10 text-white text-center px-4 max-w-4xl absolute bottom-8">
-        <div className="mx-auto w-32 h-10 mt-16 z-50">
+        <div className="mx-auto w-32 h-10 z-50 max-sm:hidden">
           <Image
             src="/logo-web.png"
             alt="Logo"
@@ -72,9 +91,11 @@ export default function Home() {
           />
         </div>
 
-        <h1 className="text-5xl md:text-6xl font-bold mb-2">EM BREVE</h1>
+        <h1 className="text-5xl md:text-6xl font-bold mb-2 max-sm:hidden">
+          EM BREVE
+        </h1>
 
-        <p className="text-xl md:text-xl mb-4">
+        <p className="text-xl md:text-xl mb-4 max-sm:hidden">
           Data de lançamento: 01 de junho
         </p>
 
@@ -87,7 +108,7 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col gap-4 items-center justify-center max-w-lg mx-auto z-50">
-          <p className="font-bold text-xl text-[#8DC63F]">
+          <p className="font-bold text-lg md:text-xl text-[#8DC63F]">
             Increva-se para ficar por dentro das novidades!
           </p>
 
@@ -110,7 +131,7 @@ export default function Home() {
 function CountdownBox({ value, label }) {
   return (
     <div className="flex flex-col items-center">
-      <div className="bg-[#8DC63F] text-white w-full py-5 rounded-md">
+      <div className="bg-[#8DC63F] text-white w-full py-4 md:py-5 rounded-md">
         <div className="text-3xl md:text-5xl font-bold">{value}</div>
       </div>
       <div className="text-xs md:text-sm mt-2 font-bold">{label}</div>
