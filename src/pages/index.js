@@ -1,115 +1,119 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export default function Home() {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    // Data alvo: 1 de junho do ano atual
+    const currentYear = new Date().getFullYear();
+    const targetDate = new Date(`June 1, ${currentYear} 00:00:00`);
+
+    // Se a data já passou este ano, usar o próximo ano
+    if (targetDate < new Date()) {
+      targetDate.setFullYear(currentYear + 1);
+    }
+
+    const timer = setInterval(() => {
+      const now = new Date();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        clearInterval(timer);
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/pages/index.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+      {/* Imagem de fundo (substitua pelo caminho real depois) */}
+      <div className="absolute inset-0 z-0">
+        <div className="relative w-full h-full">
+          {/* Quando tiver a imagem real: */}
+          <Image
+            src="/paraquedas.webp"
+            alt="Fundo"
+            width={1920}
+            height={1080}
+            className="absolute inset-0 w-screen h-screen object-cover"
+            priority
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+      </div>
+
+      {/* Conteúdo */}
+      <div className="z-10 text-white text-center px-4 max-w-4xl absolute bottom-8">
+        <div className="mx-auto w-32 h-10 mt-16 z-50">
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src="/logo-web.png"
+            alt="Logo"
+            width={96}
+            height={48}
+            className="w-32 h-10 object-contain"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+
+        <h1 className="text-5xl md:text-6xl font-bold mb-2">EM BREVE</h1>
+
+        <p className="text-xl md:text-xl mb-4">
+          Data de lançamento: 01 de junho
+        </p>
+
+        {/* Contagem regressiva */}
+        <div className="grid grid-cols-4 gap-4 md:gap-6 mb-6 text-[#8DC63F]">
+          <CountdownBox value={timeLeft.days} label="DIAS" />
+          <CountdownBox value={timeLeft.hours} label="HORAS" />
+          <CountdownBox value={timeLeft.minutes} label="MINUTOS" />
+          <CountdownBox value={timeLeft.seconds} label="SEGUNDOS" />
+        </div>
+
+        <div className="flex flex-col gap-4 items-center justify-center max-w-lg mx-auto z-50">
+          <p className="font-bold text-xl text-[#8DC63F]">
+            Increva-se para ficar por dentro das novidades!
+          </p>
+
+          <div className="flex w-full">
+            <input
+              type="email"
+              placeholder="Seu email"
+              className="py-3 px-4 rounded-l-md w-full focus:outline-none bg-white text-gray-800"
+            />
+            <button className="bg-[#8DC63F] text-white font-bold py-3 px-6 rounded-r-md hover:bg-[#97E169] transition-colors cursor-pointer">
+              Enviar
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
+
+function CountdownBox({ value, label }) {
+  return (
+    <div className="flex flex-col items-center">
+      <div className="bg-[#8DC63F] text-white w-full py-5 rounded-md">
+        <div className="text-3xl md:text-5xl font-bold">{value}</div>
+      </div>
+      <div className="text-xs md:text-sm mt-2 font-bold">{label}</div>
     </div>
   );
 }
