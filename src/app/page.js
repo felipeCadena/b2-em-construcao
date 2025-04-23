@@ -20,7 +20,7 @@ export default function Home() {
       </div>
 
       {/* Conteúdo */}
-      <div className="z-10 text-center absolute md:top-1/6 max-sm:w-full max-sm:px-8 max-sm:bottom-1/6 max-sm:right-0 right-24 xl:right-24 2xl:right-1/6">
+      <div className="z-10 text-center absolute md:top-1/6 max-sm:w-full max-sm:px-8 max-sm:bottom-[21%] max-sm:right-0 right-24 xl:right-24 2xl:right-1/6">
         <h1 className="text-5xl md:text-7xl font-extrabold mb-2 text-black">
           em breve!
         </h1>
@@ -39,7 +39,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-30 h-24 md:h-30 mx-auto md:my-2 z-10 absolute bottom-4 md:bottom-8">
+      <div className="w-30 h-24 md:h-30 mx-auto md:my-2 z-10 absolute bottom-8">
         <Image
           src="/logo.png"
           alt="Logo"
