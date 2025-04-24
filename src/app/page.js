@@ -15,11 +15,11 @@ export default function Home() {
     sendEmail(email)
       .then(() => {
         setEmail("");
-        toast.success("Email recebido com sucesso!");
+        toast.success("Cadastro efetuado com sucesso!");
       })
       .catch((error) => {
         console.error("Erro ao receber o email:", error);
-        toast.error("Erro ao receber o email. Tente novamente!");
+        toast.error("Erro ao se cadastrar. Tente novamente!");
       })
       .finally(() => {
         setIsLoading(false);
