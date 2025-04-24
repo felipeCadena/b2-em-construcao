@@ -32,15 +32,17 @@ export default function Home() {
         <Image
           src="/para.jpeg"
           alt="Imagem de fundo"
-          fill
-          className="object-cover max-sm:hidden 2xl:object-[center_35%]"
+          width={1920}
+          height={1080}
+          className="object-cover w-full h-full max-sm:hidden 2xl:object-[center_35%]"
           priority
         />
         <Image
-          src="/ar-3.jpeg"
+          src="/paraquedas.webp"
           alt="Imagem de fundo"
-          fill
-          className="object-cover md:hidden"
+          width={1920}
+          height={1080}
+          className="object-cover w-full h-full md:hidden"
           priority
         />
       </div>
