@@ -5,27 +5,16 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <div className="relative w-full h-full">
-          <Image
-            src="/paraquedas.webp"
-            alt="Fundo"
-            width={1920}
-            height={1080}
-            className="absolute inset-0 w-screen h-screen object-cover"
-            priority
-          />
-        </div>
-      </div>
+    <main className="relative h-screen w-screen flex flex-col items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 z-0 bg-[url('/paraquedas.webp')] bg-cover bg-center bg-no-repeat" />
 
       {/* Conteúdo */}
-      <div className="z-10 text-center absolute md:top-1/6 max-sm:w-full max-sm:px-8 max-sm:bottom-[21%] max-sm:right-0 right-24 xl:right-24 2xl:right-1/6">
-        <h1 className="text-5xl md:text-7xl font-extrabold mb-2 text-black">
+      <div className="z-10 text-center absolute md:top-1/6 max-sm:w-full max-sm:px-8 max-sm:bottom-[21%] max-sm:right-0 right-20 xl:right-20 2xl:right-56">
+        <h1 className="text-6xl md:text-7xl font-extrabold mb-2 text-black">
           em breve!
         </h1>
 
-        <div className="md:mt-6 max-w-lg mx-auto z-50">
+        <div className="md:mt-6 max-w-md px-6 md:px-8 mx-auto z-50">
           <div className="flex flex-col w-full">
             <input
               type="email"
