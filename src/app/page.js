@@ -2,26 +2,68 @@
 
 import React from "react";
 import Image from "next/image";
+import { sendEmail } from "../libs";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
+  const [email, setEmail] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const handleEmail = (email) => {
+    setIsLoading(true);
+    sendEmail(email)
+      .then(() => {
+        setEmail("");
+        toast.success("Email recebido com sucesso!");
+      })
+      .catch((error) => {
+        console.error("Erro ao receber o email:", error);
+        toast.error("Erro ao receber o email. Tente novamente!");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
   return (
     <main className="relative h-screen w-screen flex flex-col items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0 bg-[url('/paraquedas.webp')] bg-cover bg-center bg-no-repeat" />
+      <div className="absolute inset-0 z-0 w-screen h-screen">
+        <Image
+          src="/para.jpeg"
+          alt="Imagem de fundo"
+          fill
+          className="object-cover max-sm:hidden 2xl:object-[center_35%]"
+          priority
+        />
+        <Image
+          src="/ar-3.jpeg"
+          alt="Imagem de fundo"
+          fill
+          className="object-cover md:hidden"
+          priority
+        />
+      </div>
 
       {/* Conteúdo */}
-      <div className="z-10 text-center absolute md:top-1/6 max-sm:w-full max-sm:px-8 max-sm:bottom-[21%] max-sm:right-0 right-20 xl:right-20 2xl:right-56">
-        <h1 className="text-6xl md:text-7xl font-extrabold mb-2 text-black">
+      <div className="z-10 text-center absolute md:top-1/6 max-sm:w-full max-sm:px-8 max-sm:top-[52%] max-sm:right-0 right-28 xl:right-28 2xl:right-60">
+        <h1 className="text-6xl md:text-[5.5rem] font-extrabold mb-2 text-black">
           em breve!
         </h1>
 
-        <div className="md:mt-6 max-w-md px-6 md:px-8 mx-auto z-50">
-          <div className="flex flex-col w-full">
+        <div className="mt-12 max-w-[16rem] md:max-w-sm mx-auto z-50">
+          <div className="flex flex-col">
             <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               placeholder="Seu email"
-              className="p-4 rounded-t-md w-full focus:outline-none bg-white text-gray-800"
+              className="p-3 rounded-t-md w-full text-sm focus:outline-none bg-white text-gray-800"
             />
-            <button className="bg-black text-white text-2xl font-bold p-4 rounded-b-md hover:bg-gray-700 transition-colors cursor-pointer">
+            <button
+              onClick={() => handleEmail(email)}
+              className="bg-black text-white text-lg font-bold p-3 rounded-b-md hover:bg-gray-700 transition-colors cursor-pointer"
+            >
               me avise!
             </button>
           </div>
