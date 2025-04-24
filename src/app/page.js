@@ -28,13 +28,13 @@ export default function Home() {
 
   return (
     <main className="relative h-screen w-screen flex flex-col items-center justify-center overflow-hidden">
-      <div className="w-full h-full">
+      <div className="h-screen w-screen">
         <Image
           src="/paraquedas-1.jpeg"
           alt="Imagem de fundo"
           width={1920}
           height={1080}
-          className="object-cover w-full h-full max-sm:hidden object-[center_70%] 2xl:object-[center_70%]"
+          className="object-cover h-screen w-screen max-sm:hidden"
           priority
         />
         <Image
@@ -72,7 +72,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-30 h-24 md:h-30 mx-auto md:my-2 z-10 absolute bottom-8">
+      <div className="w-30 h-24 md:h-30 mx-auto md:my-2 z-10 absolute bottom-8 md:bottom-0">
         <Image
           src="/logo.png"
           alt="Logo"
