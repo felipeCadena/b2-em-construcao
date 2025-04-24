@@ -28,13 +28,13 @@ export default function Home() {
 
   return (
     <main className="relative h-screen w-screen flex flex-col items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0 w-screen h-screen">
+      <div className="w-full h-full">
         <Image
-          src="/para.jpeg"
+          src="/paraquedas-1.jpeg"
           alt="Imagem de fundo"
           width={1920}
           height={1080}
-          className="object-cover w-full h-full max-sm:hidden 2xl:object-[center_35%]"
+          className="object-cover w-full h-full max-sm:hidden object-bottom 2xl:object-[center_70%]"
           priority
         />
         <Image
@@ -48,9 +48,9 @@ export default function Home() {
       </div>
 
       {/* Conteúdo */}
-      <div className="z-10 text-center absolute md:top-1/6 max-sm:w-full max-sm:px-8 max-sm:top-[52%] max-sm:right-0 right-28 xl:right-28 2xl:right-60">
+      <div className="z-10 text-center absolute md:top-1/4 max-sm:w-full max-sm:px-8 max-sm:top-[52%] max-sm:right-0 right-28 xl:right-28 2xl:right-60">
         <h1 className="text-6xl md:text-[5.5rem] font-extrabold mb-2 text-black">
-          em breve!
+          Em breve!
         </h1>
 
         <div className="mt-12 max-w-[16rem] md:max-w-sm mx-auto z-50">
@@ -66,7 +66,7 @@ export default function Home() {
               onClick={() => handleEmail(email)}
               className="bg-black text-white text-lg font-bold p-3 rounded-b-md hover:bg-gray-700 transition-colors cursor-pointer"
             >
-              me avise!
+              Me avise!
             </button>
           </div>
         </div>
