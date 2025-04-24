@@ -48,7 +48,7 @@ export default function Home() {
       </div>
 
       {/* Conteúdo */}
-      <div className="z-10 text-center absolute md:top-1/4 max-sm:w-full max-sm:px-8 max-sm:top-[52%] max-sm:right-0 right-52 xl:right-52 2xl:right-80">
+      <div className="z-10 text-center absolute md:top-1/3 max-sm:w-full max-sm:px-8 max-sm:top-[52%] max-sm:right-0 right-52 xl:right-52 2xl:right-80">
         <h1 className="text-5xl md:text-[4rem] font-extrabold mb-2 text-black">
           Em breve!
         </h1>
