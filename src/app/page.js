@@ -48,12 +48,12 @@ export default function Home() {
       </div>
 
       {/* Conteúdo */}
-      <div className="z-10 text-center absolute md:top-1/4 max-sm:w-full max-sm:px-8 max-sm:top-[52%] max-sm:right-0 right-40 xl:right-40 2xl:right-80">
-        <h1 className="text-6xl md:text-[5.5rem] font-extrabold mb-2 text-black">
+      <div className="z-10 text-center absolute md:top-1/4 max-sm:w-full max-sm:px-8 max-sm:top-[52%] max-sm:right-0 right-52 xl:right-52 2xl:right-80">
+        <h1 className="text-5xl md:text-[4rem] font-extrabold mb-2 text-black">
           Em breve!
         </h1>
 
-        <div className="mt-12 max-w-[16rem] md:max-w-sm mx-auto z-50">
+        <div className="mt-12 max-w-[16rem] md:max-w-[17rem] mx-auto z-50">
           <div className="flex flex-col">
             <input
               value={email}
